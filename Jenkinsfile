@@ -1,74 +1,118 @@
 pipeline {
-  agent any
+agent any
 
-   tools {nodejs "node"}
+```
+tools {
+    nodejs "node"
+}
 
-    environment {
-        IMAGE_NAME = "lazares/node-api"
-        TAG = "v1.0-${BUILD_NUMBER}"
-        AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
-        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
-        AWS_DEFAULT_REGION = 'us-east-1'
+environment {
+    IMAGE_NAME = "lazares/node-api"
+    TAG = "v1.0-${BUILD_NUMBER}"
 
-        // Jenkins credentials IDs
-        DOCKER_CREDS = "dockerhub-creds"
-        KUBE_CONFIG  = "kubeconfig-file"
+    AWS_DEFAULT_REGION = "us-east-1"
 
-        // GitHub Repo
-        GIT_URL = "https://github.com/lazaressatya/nodejs-api-eks.git"
+    DOCKER_CREDS = "dockerhub-creds"
+
+    GIT_URL = "https://github.com/lazaressatya/nodejs-api-eks.git"
+
+    HELM_RELEASE = "node-api"
+    NAMESPACE = "production"
+}
+
+stages {
+
+    stage('Checkout Code') {
+        steps {
+            git branch: 'main', url: "${GIT_URL}"
+        }
     }
 
-    stages {
-
-        stage('Checkout Code from GitHub') {
-            steps {
-                git branch: "main", url: "${GIT_URL}"
-            }
+    stage('Install Dependencies') {
+        steps {
+            bat 'npm install'
         }
-     
-    stage('Node JS Build') {
-      steps {
-        sh 'npm install'
-      }
     }
-  
-      stage('Build Docker Image') {
-            steps {
-                bat "docker build -t %IMAGE_NAME%:%TAG% ."
-            }
+
+    stage('Run Tests') {
+        steps {
+            bat 'npm test'
         }
+    }
 
-
-        stage('Push Image to DockerHub') {
-            steps {
-                withCredentials([usernamePassword(
-                    credentialsId: DOCKER_CREDS,
-                    usernameVariable: "DOCKER_USER",
-                    passwordVariable: "DOCKER_PASS"
-                )]) {
-
-                    bat '''
-                    docker login -u %DOCKER_USER% -p %DOCKER_PASS%
-                    docker push %IMAGE_NAME%:%TAG%
-                    docker logout
-                    '''
-                }
-            }
+    stage('Build Docker Image') {
+        steps {
+            bat '''
+            docker build -t %IMAGE_NAME%:%TAG% .
+            '''
         }
-         
-     stage('Deploy to Kubernetes') { 
-        steps  {
-            
-             sh ''' kubectl apply -f manifests/namespace.yaml 
-                    kubectl apply -f manifests/deployment.yaml 
-                    kubectl apply -f manifests/service.yaml 
-                    kubectl apply -f manifests/ingress.yaml 
-                    kubectl apply -f manifests/hpa.yaml 
-                    kubectl apply -f manifests/servicemonitor.yaml 
-                    kubectl apply -f manifests/ne tworkpolicy.yaml 
-                    kubectl rollout status deployment/node-api -n production 
+    }
+
+    stage('Push Image to Docker Hub') {
+        steps {
+
+            withCredentials([
+                usernamePassword(
+                    credentialsId: "${DOCKER_CREDS}",
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )
+            ]) {
+
+                bat '''
+                echo %DOCKER_PASS% | docker login -u %DOCKER_USER% --password-stdin
+
+                docker push %IMAGE_NAME%:%TAG%
+
+                docker tag %IMAGE_NAME%:%TAG% %IMAGE_NAME%:latest
+
+                docker push %IMAGE_NAME%:latest
+
+                docker logout
                 '''
+            }
         }
-      }
     }
+
+    stage('Deploy using Helm') {
+        steps {
+
+            bat '''
+            helm upgrade --install %HELM_RELEASE% .\\node-api ^
+            --namespace %NAMESPACE% ^
+            --create-namespace ^
+            --set image.repository=%IMAGE_NAME% ^
+            --set image.tag=%TAG%
+            '''
+        }
+    }
+
+    stage('Verify Deployment') {
+        steps {
+
+            bat '''
+            kubectl get pods -n %NAMESPACE%
+
+            kubectl rollout status deployment/%HELM_RELEASE% -n %NAMESPACE%
+            '''
+        }
+    }
+}
+
+post {
+
+    success {
+        echo 'Deployment Successful'
+    }
+
+    failure {
+        echo 'Pipeline Failed'
+    }
+
+    always {
+        cleanWs()
+    }
+}
+```
+
 }
