@@ -9,8 +9,8 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
+      targetPort: api-web
       protocol: TCP
-      name: http
+      name: api-web
   selector:
     {{- include "node-api.selectorLabels" . | nindent 4 }}
