@@ -8,7 +8,7 @@
 <img width="1917" height="927" alt="image" src="https://github.com/user-attachments/assets/f0b32cdd-ec7d-4d94-916a-235627cf55cb" />
 
 
-**For Jenkins modified in the security group with port number 8080 , 9090, 3000, **
+**For Jenkins modified in the security group with port number 8080 , 9090, 3000**
 
 <img width="1912" height="1015" alt="image" src="https://github.com/user-attachments/assets/449a9ce5-850f-4f2f-89c9-a9869230f5ff" />
 
