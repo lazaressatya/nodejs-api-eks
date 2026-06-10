@@ -1,7 +1,7 @@
 
 **PROJECT FLOW** 
 
-**GitHub → Jenkins → Docker Hub → Helm → AWS EKS → ALB → Node.js Pods → Prometheus/Grafana → ELK Stack.**
+**GitHub → Jenkins → Docker Hub → Manifest Files → AWS EKS → ALB → Node.js Pods → Prometheus/Grafana → ELK Stack.**
 
 **Jenkins server in AWS EC2 instance**
 
