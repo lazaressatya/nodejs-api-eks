@@ -1,7 +1,17 @@
 Jenkins File for CI CD pipeline 
 
 
+<img width="1896" height="917" alt="image" src="https://github.com/user-attachments/assets/daa8b8b3-8ffe-4de4-ac00-5abf383d82f2" />
+
+
+Stage View for for this project 
+
+<img width="1232" height="332" alt="image" src="https://github.com/user-attachments/assets/be895bd8-27c4-4776-ab37-a9058fb082d0" />
+
+
+
 NODE API project Tree structure image
+
 <img width="1286" height="670" alt="image" src="https://github.com/user-attachments/assets/82127149-af27-4c6c-84ff-01c98396b607" />
 
 HELM Installation and Commands 
