@@ -35,7 +35,8 @@
 
 **EKS CLUSTER IN AWS INSTANCE**
 
-<img width="1902" height="1022" alt="ekscluster" src="https://github.com/user-attachments/assets/870d459a-9b06-4117-b05e-c87661a24316" />
+<img width="1911" height="1025" alt="image" src="https://github.com/user-attachments/assets/393fcf32-4faa-46e8-b9bd-df0f7d1134f3" />
+
 
 
 
