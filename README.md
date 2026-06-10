@@ -13,7 +13,8 @@
 <img width="1896" height="917" alt="image" src="https://github.com/user-attachments/assets/daa8b8b3-8ffe-4de4-ac00-5abf383d82f2" />
 
 
-**Stage View for for this project **
+
+**Stage View for for this project**
 
 <img width="1232" height="332" alt="image" src="https://github.com/user-attachments/assets/be895bd8-27c4-4776-ab37-a9058fb082d0" />
 
@@ -30,12 +31,14 @@
 
 <img width="1902" height="1022" alt="ekscluster" src="https://github.com/user-attachments/assets/870d459a-9b06-4117-b05e-c87661a24316" />
 
-**HELM INSTALLATION COMPLETED **
+
+
+**HELM INSTALLATION COMPLETED**
 
 <img width="1917" height="1067" alt="helm" src="https://github.com/user-attachments/assets/99d41637-c5b7-44f1-a015-d7141b1444e0" />
 
 
-**HELM Installation and Commands **
+**HELM Installation and Commands**
 
 **1.  Go to Project Directory**
 
