@@ -83,6 +83,11 @@
 
    helm get values node-api -n production
 
+   **NODE-API OUTPUT SCREENSHOT**
+
+   ![Uploading image.png…]()
+
+
 
 **Install Prometheus and Grafana using Helm on Kubernetes/EKS**
 
