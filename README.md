@@ -1,3 +1,8 @@
+
+**PROJECT FLOW** 
+
+**GitHub → Jenkins → Docker Hub → Helm → AWS EKS → ALB → Node.js Pods → Prometheus/Grafana → ELK Stack.**
+
 **Jenkins server in AWS EC2 instance**
 
 <img width="1917" height="962" alt="jenkins_api_server" src="https://github.com/user-attachments/assets/a54e66cc-760a-40db-8d14-5918ac3cfbd5" />
