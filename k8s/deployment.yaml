@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: node-api-deployment
   namespace: production
+  labels:
+    app: node-api
 
 spec:
   replicas: 3
@@ -11,21 +13,22 @@ spec:
     matchLabels:
       app: node-api
 
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+
   template:
     metadata:
       labels:
         app: node-api
 
-     
-
     spec:
-      securityContext:
-        runAsNonRoot: false
-        fsGroup: 1000
-
       containers:
       - name: node-api
         image: lazares/node-api:v1.0
+        imagePullPolicy: Always
 
         ports:
         - name: api-web
@@ -33,27 +36,22 @@ spec:
 
         resources:
           requests:
-            cpu: "250m"
-            memory: "256Mi"
+            cpu: "100m"
+            memory: "128Mi"
           limits:
             cpu: "500m"
             memory: "512Mi"
 
-        securityContext:
-          allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: true
-          capabilities:
-            drop:
-            - ALL
+        livenessProbe:
+          httpGet:
+            path: /
+            port: api-web
+          initialDelaySeconds: 30
+          periodSeconds: 10
 
         readinessProbe:
           httpGet:
-            path: /health
+            path: /
             port: api-web
           initialDelaySeconds: 10
-
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: api-web
-          initialDelaySeconds: 30
+          periodSeconds: 5
