@@ -93,6 +93,21 @@
 
 **Install Prometheus and Grafana using Helm on Kubernetes/EKS**
 
+**Prometheus Dashboard fetching the targets **
+
+URL: http://a20b33e7408cf46128c1a4da9f81cdc0-1993384439.ap-south-1.elb.amazonaws.com/targets
+
+<img width="1917" height="1001" alt="image" src="https://github.com/user-attachments/assets/3f245635-b00c-47dc-8846-3cf62a34d35d" />
+
+**Grafana Dashboard fetching the data from via prometheus**
+
+URL : http://afe4021228a274791a8975e4ea7e4ce7-1964621081.ap-south-1.elb.amazonaws.com/
+
+
+<img width="1907" height="1020" alt="image" src="https://github.com/user-attachments/assets/3e89ae59-7cd3-486c-8fec-44efc59ade3d" />
+
+
+
    
      
     
