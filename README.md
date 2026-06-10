@@ -42,7 +42,8 @@
 
    **NODE-API OUTPUT SCREENSHOT**
 
-<img width="1917" height="967" alt="image" src="https://github.com/user-attachments/assets/18f67146-e449-4d04-9af2-72d4f9163fce" />
+<img width="1912" height="1017" alt="image" src="https://github.com/user-attachments/assets/b7481da4-6e5f-405d-bfc8-30c122952e17" />
+
 
 
 
