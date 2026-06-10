@@ -4,7 +4,52 @@ NODE API project Tree structure image
 HELM Installation and Commands 
 
 1.  Go to Project Directory
-       cd nodejs-api-eks
+
+     cd nodejs-api-eks
+
+2. Validate the Helm Chart
+
+   helm lint ./node-api
+3. Preview the Generated Manifests
+
+   helm template node-api ./node-api
+
+4. Install the Chart
+
+   helm install node-api ./node-api \
+   --namespace production \
+--create-namespace
+
+
+5. Verify Helm Release
+
+   helm list -n production
+
+ 
+6.  Check Resources
+
+    kubectl get all -n production
+    kubectl get ingress -n production
+    kubectl get svc -n production
+    kubectl get pods -n production
+
+7. Check Release Status
+
+   helm status node-api -n production
+       
+9. View Release Values
+
+   helm get values node-api -n production
+
+   
+     
+    
+
+
+    
+
+
+
 
 
 
