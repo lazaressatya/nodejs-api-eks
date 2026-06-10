@@ -5,7 +5,8 @@
 
 **Jenkins server in AWS EC2 instance**
 
-<img width="1917" height="962" alt="jenkins_api_server" src="https://github.com/user-attachments/assets/a54e66cc-760a-40db-8d14-5918ac3cfbd5" />
+<img width="1917" height="927" alt="image" src="https://github.com/user-attachments/assets/f0b32cdd-ec7d-4d94-916a-235627cf55cb" />
+
 
 **For Jenkins modified in the security group with port number 8080**
 
