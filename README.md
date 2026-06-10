@@ -85,7 +85,8 @@
 
    **NODE-API OUTPUT SCREENSHOT**
 
-   ![Uploading image.png…]()
+<img width="1917" height="967" alt="image" src="https://github.com/user-attachments/assets/18f67146-e449-4d04-9af2-72d4f9163fce" />
+
 
 
 
