@@ -5,6 +5,8 @@ metadata:
   namespace: production
 
 spec:
+  type: ClusterIP
+
   selector:
     app: node-api
 
@@ -12,5 +14,4 @@ spec:
   - name: api-web
     port: 3000
     targetPort: api-web
-
-  type: NodePort
+    protocol: TCP
