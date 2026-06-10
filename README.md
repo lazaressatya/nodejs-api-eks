@@ -1,3 +1,12 @@
+**Jenkins server in AWS EC2 instance**
+
+<img width="1917" height="962" alt="jenkins_api_server" src="https://github.com/user-attachments/assets/a54e66cc-760a-40db-8d14-5918ac3cfbd5" />
+
+**For Jenkins modified in the security group with port number 8080**
+
+<img width="1912" height="977" alt="securitygroup" src="https://github.com/user-attachments/assets/be79457b-e604-46ea-b032-fe90fef85cb7" />
+
+
 **Jenkins File for CI CD pipeline** 
 
 
@@ -9,10 +18,22 @@
 <img width="1232" height="332" alt="image" src="https://github.com/user-attachments/assets/be895bd8-27c4-4776-ab37-a9058fb082d0" />
 
 
-
 **NODE API project Tree structure image**
 
 <img width="1286" height="670" alt="image" src="https://github.com/user-attachments/assets/82127149-af27-4c6c-84ff-01c98396b607" />
+
+**Installation completed the EKS Cluster**
+
+<img width="1915" height="1017" alt="eks" src="https://github.com/user-attachments/assets/ecaa87d2-d29a-4451-bd03-e2c658d0b4e6" />
+
+**EKS CLUSTER IN AWS INSTANCE**
+
+<img width="1902" height="1022" alt="ekscluster" src="https://github.com/user-attachments/assets/870d459a-9b06-4117-b05e-c87661a24316" />
+
+**HELM INSTALLATION COMPLETED **
+
+<img width="1917" height="1067" alt="helm" src="https://github.com/user-attachments/assets/99d41637-c5b7-44f1-a015-d7141b1444e0" />
+
 
 **HELM Installation and Commands **
 
