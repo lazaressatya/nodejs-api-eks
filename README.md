@@ -73,6 +73,14 @@ URL : http://afe4021228a274791a8975e4ea7e4ce7-1964621081.ap-south-1.elb.amazonaw
 
 
 
+**Kibana File beats**
+
+
+{"timestamp":"2026-06-11T10:15:22Z","level":"INFO","service":"node-api","message":"Application started"}
+{"timestamp":"2026-06-11T10:16:01Z","level":"INFO","service":"node-api","endpoint":"/api/users","statusCode":200}
+{"timestamp":"2026-06-11T10:18:05Z","level":"ERROR","service":"node-api","endpoint":"/api/products","statusCode":500}
+
+
 
    
      
