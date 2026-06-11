@@ -16,7 +16,7 @@ environment {
 
     GIT_URL = "https://github.com/lazaressatya/nodejs-api-eks.git"
 
-    HELM_RELEASE = "node-api"
+   
     NAMESPACE = "production"
 }
 
@@ -40,61 +40,53 @@ stages {
         }
     }
 
-    stage('Build Docker Image') {
-        steps {
-            bat '''
-            docker build -t %IMAGE_NAME%:%TAG% .
-            '''
-        }
-    }
-
-    stage('Push Image to Docker Hub') {
-        steps {
-
-            withCredentials([
-                usernamePassword(
-                    credentialsId: "${DOCKER_CREDS}",
-                    usernameVariable: 'DOCKER_USER',
-                    passwordVariable: 'DOCKER_PASS'
-                )
-            ]) {
-
-                bat '''
-                echo %DOCKER_PASS% | docker login -u %DOCKER_USER% --password-stdin
-
-                docker push %IMAGE_NAME%:%TAG%
-
-                docker tag %IMAGE_NAME%:%TAG% %IMAGE_NAME%:latest
-
-                docker push %IMAGE_NAME%:latest
-
-                docker logout
-                '''
+   stage('Build Docker Image') {
+            steps {
+                bat "docker build -t %IMAGE_NAME%:%TAG% ."
             }
         }
-    }
 
-    stage('Deploy using Helm') {
-        steps {
+     stage('Push Image to DockerHub') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: DOCKER_CREDS,
+                    usernameVariable: "DOCKER_USER",
+                    passwordVariable: "DOCKER_PASS"
+                )]) {
 
-            bat '''
-            helm upgrade --install %HELM_RELEASE% .\\node-api ^
-            --namespace %NAMESPACE% ^
-            --create-namespace ^
-            --set image.repository=%IMAGE_NAME% ^
-            --set image.tag=%TAG%
-            '''
+                    bat '''
+                    docker login -u %DOCKER_USER% -p %DOCKER_PASS%
+                    docker push %IMAGE_NAME%:%TAG%
+                    docker logout
+                    '''
+                }
+            }
         }
-    }
+
+   
 
     stage('Verify Deployment') {
         steps {
 
             bat '''
-            kubectl get pods -n %NAMESPACE%
+            withCredentials([file(credentialsId: KUBE_CONFIG, variable: "KUBECONFIG")]) {
 
-            kubectl rollout status deployment/%HELM_RELEASE% -n %NAMESPACE%
-            '''
+                     bat '''
+                    set KUBECONFIG=%KUBECONFIG%
+
+                    kubectl config current-context
+                    kubectl get nodes
+
+                    kubectl create namespace website --dry-run=client -o yaml | kubectl apply -f -
+                    kubectl apply -f namespace.yaml
+                    kubectl apply -f deployment.yaml
+                    kubectl apply -f service.yaml
+                        
+
+                    kubectl set image deployment/k8sstatic-web-deployment ^
+                    k8sstatic-webs=%IMAGE_NAME%:%TAG% -n website
+
+                    kubectl rollout status deployment/k8sstatic-web-deployment -n website
         }
     }
 }
