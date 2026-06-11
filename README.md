@@ -41,6 +41,11 @@
 
 <img width="1382" height="322" alt="image" src="https://github.com/user-attachments/assets/dd1318d3-15b0-4ac5-8a82-a7b5df38c9af" />
 
+**Service.yaml named container port is named `api-web`**
+
+<img width="1452" height="437" alt="image" src="https://github.com/user-attachments/assets/6e48772e-df10-41b5-9b2d-843f24c8acf4" />
+
+
 
 
    **NODE-API OUTPUT SCREENSHOT**
