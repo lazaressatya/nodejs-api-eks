@@ -66,6 +66,9 @@ URL : http://afe4021228a274791a8975e4ea7e4ce7-1964621081.ap-south-1.elb.amazonaw
 
 <img width="1887" height="1012" alt="image" src="https://github.com/user-attachments/assets/1bcec6fa-8f73-4d66-81f6-387e5a67e850" />
 
+**ELK STACK:**
+<img width="1900" height="976" alt="image" src="https://github.com/user-attachments/assets/d6701576-73e2-44c0-97ce-31b02f50ef1f" />
+
 
 
    
