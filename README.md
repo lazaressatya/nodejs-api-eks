@@ -28,6 +28,12 @@ Fluent Bit -> Elasticsearch -> Kibana
 
 **GitHub → Jenkins → Docker Hub → Kubernetes Manifest Files → AWS EKS → ALB → Node.js Pods → Prometheus/Grafana → ELK Stack.**
 
+
+**Project Structure**
+
+<img width="1080" height="351" alt="image" src="https://github.com/user-attachments/assets/809d68e5-23e2-4e66-a1b7-ee93c03820bd" />
+
+
 **Jenkins server in AWS EC2 instance**
 
 <img width="1917" height="927" alt="image" src="https://github.com/user-attachments/assets/f0b32cdd-ec7d-4d94-916a-235627cf55cb" />
@@ -70,6 +76,14 @@ Fluent Bit -> Elasticsearch -> Kibana
 
 <img width="1452" height="437" alt="image" src="https://github.com/user-attachments/assets/6e48772e-df10-41b5-9b2d-843f24c8acf4" />
 
+
+**Deployment Steps Deploy Application**
+
+k8s/
+kubectl apply -f namespace.yaml
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+kubectl apply -f ingress.yaml
 
 
 
