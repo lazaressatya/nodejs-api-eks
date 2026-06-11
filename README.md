@@ -1,4 +1,29 @@
 
+**Infrastructure Diagram**
+
+GitHub
+    |
+Jenkins
+    |
+Docker Build
+    |
+Docker Hub
+    |
+k8s manifest files
+    |
+AWS EKS
+    |
+ALB Ingress
+    |
+Node.js Pods
+
+Monitoring:
+Prometheus -> Grafana
+
+Logging:
+Fluent Bit -> Elasticsearch -> Kibana
+
+
 **PROJECT FLOW** 
 
 **GitHub → Jenkins → Docker Hub → Kubernetes Manifest Files → AWS EKS → ALB → Node.js Pods → Prometheus/Grafana → ELK Stack.**
