@@ -37,6 +37,9 @@
 <img width="1911" height="1025" alt="image" src="https://github.com/user-attachments/assets/393fcf32-4faa-46e8-b9bd-df0f7d1134f3" />
 
 
+**The main application container port is named `api-web`**
+
+<img width="1382" height="322" alt="image" src="https://github.com/user-attachments/assets/dd1318d3-15b0-4ac5-8a82-a7b5df38c9af" />
 
 
 
