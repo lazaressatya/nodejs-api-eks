@@ -97,7 +97,7 @@ kubectl apply -f ingress.yaml
 
 **Install Prometheus and Grafana using Helm on Kubernetes/EKS**
 
-**Prometheus Dashboard fetching the targets **
+**Prometheus Dashboard fetching the targets**
 
 URL: http://a20b33e7408cf46128c1a4da9f81cdc0-1993384439.ap-south-1.elb.amazonaws.com/targets
 
